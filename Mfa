@@ -1,0 +1,13 @@
+MFA :
+1.	Go to IAM 
+2.	Select Users 
+3.	Choose the user 
+4.	Go to their security credentials 
+5.	Choose Virtual MFA device 
+6.	# Open google authentication app in your phone 
+7.	1st MFA code will come , enter it 
+8.	2nd MFA code will come in 30 seconds or so enter it 
+9.	Assign mfa
+10.	Copy summary & paste it on new tab
+11.	Enter user and passwd
+12.	MFA code will be asked for entering , go to authenticator where you will see a code on the screen m enter that code in mfa code bar .
