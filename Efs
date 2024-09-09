@@ -1,0 +1,44 @@
+Create 3 instances (linux , redhat , ubuntu )
+2 instances can have one availability zone: eg :1a and 1 instance can have a different availability zone: eg: 1b
+#edit security group: add nfs 2049
+
+After creating instances open your terminal:
+Linux : 
+Cat /etc/os-release
+Rpmquery nfs-utils
+Mkdir /nfs-data
+#go to your aws console : 
+Open EFS > new file system > refresh > sec group - add your own secgroup inplace of default > edit disable file protection > attach
+Sudo mount ….. /nfs-data/
+Df -h
+Cd /nfs-data/
+Touch glenn.txt{1..10}
+Ll
+Now open Redhat instance  :
+Cat /etc/os-release
+Yum install nfs-utils -y
+Rpmquery nfs-utils
+Mkdir /efs-data
+Sudo mount ….. /nfs-data/
+Df -h
+Cd /nfs-data/
+Touch glenn.txt{1..10}
+Ll
+Ubuntu:
+Apt update 
+Apt install nfs-common
+Mkdir /remote-data/
+Sudo mount /remote-data/
+Ll
+
+Go on your aws : 
+Choose a new region and a create a new instance 
+Create a fs and disable fsp > go to networking and check security group , chose the sec group you assigned
+#inbound rules : add nfs 2049 
+Go to old region > create replica >choose dest >browse efs >create replica
+Go to your terminal 
+Df -h
+Mkdir /data-mum
+Sudo mount 
+Cd /data-mum
+Ll
