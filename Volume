@@ -1,0 +1,50 @@
+Disk Partitioning: increase and decrease Volume size:
+
+1.	Create ec2 instance 
+2.	Create volume >gp2>5gib>100/3000> create>name: data-disk 
+3.	Select volume > attach volume to the instance created > /dev/sdb
+4.	Open instance in terminal 
+5.	Lsblk
+6.	Df -h
+7.	Mkfs. <tab> <tab>
+8.	Mkfs.ext4 /dev/xvdb
+9.	Mkdir /data
+10.	Mount /dev/xvdb /data
+11.	Blkid >copy uuid of xvdb and paste it below 
+12.	Vim /etc/fstab {uuid = …. /data ext4 defaults 0 0)
+13.	Df -h
+14.	Cd /data
+15.	Touch glenn.txt
+16.	Mount -a
+17.	Reboot the instance and check if the data is mounted or not 
+18.	Cd /data
+19.	Ls
+20.	Df -h
+
+
+21.	To increase the size: 
+22.	Go to volume > actions > Modify volume > change size to 10gib
+23.	Resize2fs /dev/xvdb
+24.	Df -h
+
+25.	To decrease volume :
+26.	  We cannot decrease volume directly by modifying the volume size , we need to create a new vol of desired decreased size and move the contents of old vol to new vol and delete old vol :
+27.	Create new vol with 4gib>attach vol> /dev/sdc
+28.	Lsblk
+29.	Df -h
+30.	Mkfs.ext4 /dev/xvdc
+31.	Mkdir glen-data
+32.	Mount /dev/xvdc /glenn-data
+33.	Cd /data
+34.	 Mv * /glenn-data/
+35.	Blkid
+36.	Vim /etc/fstab(paste uuid of xvdc and erase uuid of xvdb)
+37.	Umount /data
+38.	Reboot and check
+39.	Modify root volume i.e /dev/xvda)
+40.	Modify vol from aws
+41.	Df -h
+42.	Xfs_growfs -d /dev/xvda1
+43.	Growpart /dev/xvda 1
+44.	Xfs_growfs -d /dev/xvda1
+45.	Df-h 
