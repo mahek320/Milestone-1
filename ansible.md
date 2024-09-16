@@ -196,10 +196,10 @@ accelerate_connect_timeout = 5.0
 ======================================================================================================================================================================
 - ansible --version
 
-  ## *Create vim host under etc/ansible *
+  #### *Create vim host under etc/ansible *
 - vim hosts
 - paste ip of the two hosts in format 172.31.1.23 [us-server]
 - ansible all --list-hosts
 - ansible all -m ping -a 'data = hello'
 
-- # *When the output is green command is executed, when gold that means ansible did changes in the remote machine and when in red it indicates error*
+- #### *When the output is green command is executed, when gold that means ansible did changes in the remote machine and when in red it indicates error*
