@@ -7,13 +7,13 @@
 - vim authorized_keys
 - cat id_rsa.pub
   
-### *Here incase of controller copy paste the public key of other two instances and paste the keys in the vim file and likewise do the same for other 2 instances to establish connection*
+#### *Here incase of controller copy paste the public key of other two instances and paste the keys in the vim file and likewise do the same for other 2 instances to establish connection*
 
 ### *Controller*
 - systemctl start sshd 
 - systemctl enable sshd
 
-### *Use ping command to check if the connection is established between the instances and allow ICMP port in network security*
+#### *Use ping command to check if the connection is established between the instances and allow ICMP port in network security*
 
 ### *Controller -   Install ansible*
 
@@ -196,7 +196,7 @@ accelerate_connect_timeout = 5.0
 ======================================================================================================================================================================
 - ansible --version
 
-  #### *Create vim host under etc/ansible *
+  #### *Create vim host under etc/ansible*
 - vim hosts
 - paste ip of the two hosts in format 172.31.1.23 [us-server]
 - ansible all --list-hosts
