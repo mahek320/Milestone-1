@@ -24,7 +24,7 @@
 
 =====================================================================================================================================================================
 
-### *Paste the below content inside thye vim file*
+### *Paste the below content inside the vim file*
 
 # config file for ansible -- http://ansible.com/
 # ==============================================
