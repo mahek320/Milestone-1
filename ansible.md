@@ -203,3 +203,81 @@ accelerate_connect_timeout = 5.0
 - ansible all -m ping -a 'data = hello'
 
 - #### *When the output is green command is executed, when gold that means ansible did changes in the remote machine and when in red it indicates error*
+
+### *Configure web server*
+ - cd /etc/ansible
+ - vim configure.yml
+
+#### *Paste the below content inside vim file*
+
+   ---
+
+- name: configure apache server
+  hosts: all
+
+  tasks:
+
+     - name: installed httpd pkg
+       dnf:
+            name: httpd
+            state: latest
+     - name: copy index.html file
+       copy:
+            src: index.html
+            dest: /var/www/html/index.html
+     - name: started apache
+       systemd:
+             name: httpd
+             state: started
+             enabled: true
+
+       
+ - ansible-playbook configure.yml --syntax-check
+ - cat >index.html
+ - ansible-playbook configure.yml  
+   #### *paste the public ip of the host*
+
+   ### *To make a group and a user using script*
+
+    vim playbook.yml
+
+#### *Paste the below content inside the vim file*
+
+---
+
+- name: creating some user & group
+  hosts: all
+
+
+  tasks:
+
+    - name: create a group
+      group:
+           name: devops
+           state: present
+    - name: create an user thor
+      user:
+           name: thor
+           uid: 1200
+           shell: /bin/bash
+           home: /home/india
+           groups: devops
+           state: present
+    - name: install smb pkg
+      yum:
+           name: cifs-utils
+           state: present
+    - name: install ftp
+      yum:
+           name: nfs-utils
+           state: present
+
+
+- ansible-playbook playbook.yml
+ 
+#### *Go to host and run the below command to check the user created inside group*
+
+- cat /etc/group
+
+
+   
