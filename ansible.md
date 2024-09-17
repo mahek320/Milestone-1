@@ -281,5 +281,74 @@ accelerate_connect_timeout = 5.0
 
 - cat /etc/group
 
+### *Handler*
+- vim configure-appache.yml   (*Inside ansible directory*)
+(*Paste the below content*)
+  ---
+- name: configure apache with handler
+  hosts: all
+  tasks:
+    - name: installed httpd
+      dnf:
+        name: httpd
+        state: latest
+ 
+    - name: copied httpd.conf file on target machine
+      copy:
+        src: httpd.conf
+        dest: /etc/httpd/conf/httpd.conf
+ 
+    - name: copied index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+ 
+    - name: restart the httpd service
+      systemd:
+        name: httpd
+        state: restarted
+        enabled: true
+      notify: restart_httpd
+  
+  handlers:
+    - name: restart_httpd
+      service:
+        name: httpd
+        state: restarted
+        enabled: true
+ 
+    - name: restart_firewalld
+      service:
+        name: firewalld
+        state: restarted
+        enabled: true
+
+(*Now make an index file*)
+  - cat > index.html
+  - yum install httpd -y
+  - cd /etc/ansible
+  - vim /etc/httpd/conf/httpd.conf     (*Add a comment at start #Mahek Shetty and then save it*)
+  - ll              (*Check for index.html file*)
+  - ansible-playbook configure-appache.yml --syntax-check     (*Handler and task should have same indentation*)
+  - ansible-playbook configure-appache.yml
+
+ # (*Now go to host and check if the files are reflecting*)
+
+(*To check if httpd is installed*)
+ -  rpmquery httpd
+(*To check if the index html file is available*)
+ -  cd /var/www/html
+ -  ll
+(*To check conf file*)
+ -  cd /etc/httpd/conf
+ -  ll
+(*Check if the changes made in the /etc/httpd/conf/httpd.conf is reflecting*)
+ - cat httpd.conf
+ - ip a s
+ - curl http://172.31.34.36
+   
+
+
+
 
    
