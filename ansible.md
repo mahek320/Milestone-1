@@ -362,7 +362,46 @@ accelerate_connect_timeout = 5.0
  - cat httpd.conf
  - ip a s
  - curl http://172.31.34.36
-   
+
+#### *Configure AWS with ansible*
+
+-  cd /etc/ansible
+-  vim creds.yml        (#*Paste the aws_access_key: and aws_secret_key: *)
+-  vim ec2.yml
+
+## *Here change the ami, region, security group, key name*
+
+```yaml
+  ---
+- name: create an ec2 instance
+  hosts: all
+  vars_files:
+        - creds.yml
+  tasks:
+    - name: install pip
+      yum:
+        name: pip
+        state: present
+    - name: install boto3
+      pip:
+        name: boto3
+        state: present
+
+    - name: create an ec2 instance using ansible
+      amazon.aws.ec2_instance:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        key_name: "ans-key"
+        instance_type: t2.micro
+        security_group: sg-0891eca823714b7e5
+        region: ap-southeast-2
+        count: 1
+        image_id: ami-0e8fd5cc56e4d158c
+        tags:
+
+```
+
+ ansible-playbook ec2.yml
 
 
 
