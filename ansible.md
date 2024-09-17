@@ -217,6 +217,8 @@ accelerate_connect_timeout = 5.0
 
 #### *Paste the below content inside vim file*
 
+```yaml
+
    ---
 
 - name: configure apache server
@@ -237,6 +239,8 @@ accelerate_connect_timeout = 5.0
              name: httpd
              state: started
              enabled: true
+
+```
 
        
  - ansible-playbook configure.yml --syntax-check
