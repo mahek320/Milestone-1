@@ -327,21 +327,24 @@ accelerate_connect_timeout = 5.0
   - cat > index.html
   - yum install httpd -y
   - cd /etc/ansible
-  - vim /etc/httpd/conf/httpd.conf     (*Add a comment at start #Mahek Shetty and then save it*)
-  - ll              (*Check for index.html file*)
-  - ansible-playbook configure-appache.yml --syntax-check     (*Handler and task should have same indentation*)
+  - vim /etc/httpd/conf/httpd.conf     (#*Add a comment at start #Mahek Shetty and then save it*)
+  - ll              (#*Check for index.html file*)
+  - ansible-playbook configure-appache.yml --syntax-check     (#*Handler and task should have same indentation*)
   - ansible-playbook configure-appache.yml
 
  # (*Now go to host and check if the files are reflecting*)
 
 (*To check if httpd is installed*)
  -  rpmquery httpd
+ -  
 (*To check if the index html file is available*)
  -  cd /var/www/html
  -  ll
+ -  
 (*To check conf file*)
  -  cd /etc/httpd/conf
  -  ll
+   
 (*Check if the changes made in the /etc/httpd/conf/httpd.conf is reflecting*)
  - cat httpd.conf
  - ip a s
