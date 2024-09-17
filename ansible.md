@@ -286,6 +286,8 @@ accelerate_connect_timeout = 5.0
 ### *Handler*
 - vim configure-appache.yml   (*Inside ansible directory*)
 (*Paste the below content*)
+
+```yaml
   ---
 - name: configure apache with handler
   hosts: all
@@ -324,6 +326,7 @@ accelerate_connect_timeout = 5.0
         name: firewalld
         state: restarted
         enabled: true
+```
 
 (*Now make an index file*)
   - cat > index.html
