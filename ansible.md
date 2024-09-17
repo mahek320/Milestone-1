@@ -200,8 +200,10 @@ accelerate_connect_timeout = 5.0
   #### *Create vim host under etc/ansible*
 - vim hosts
   *paste ip of the two hosts in format*
+  
    [us-server]
    172.31.1.23
+  
 - ansible all --list-hosts
 - ansible all -m ping
   *type yes 2 times*
