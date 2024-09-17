@@ -363,13 +363,13 @@ accelerate_connect_timeout = 5.0
  - ip a s
  - curl http://172.31.34.36
 
-#### *Configure AWS with ansible*
+### *Configure AWS with ansible*
 
 -  cd /etc/ansible
 -  vim creds.yml        (#*Paste the aws_access_key: and aws_secret_key: *)
 -  vim ec2.yml
 
-## *Here change the ami, region, security group, key name*
+#### *Here change the ami, region, security group, key name*
 
 ```yaml
   ---
