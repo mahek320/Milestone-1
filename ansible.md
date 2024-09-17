@@ -336,11 +336,11 @@ accelerate_connect_timeout = 5.0
 
 (*To check if httpd is installed*)
  -  rpmquery httpd
- -  
+    
 (*To check if the index html file is available*)
  -  cd /var/www/html
  -  ll
- -  
+   
 (*To check conf file*)
  -  cd /etc/httpd/conf
  -  ll
