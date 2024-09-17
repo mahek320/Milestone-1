@@ -245,6 +245,7 @@ accelerate_connect_timeout = 5.0
 
 #### *Paste the below content inside the vim file*
 
+```yaml
 ---
 
 - name: creating some user & group
@@ -273,7 +274,7 @@ accelerate_connect_timeout = 5.0
       yum:
            name: nfs-utils
            state: present
-
+```
 
 - ansible-playbook playbook.yml
  
