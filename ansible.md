@@ -337,7 +337,7 @@ accelerate_connect_timeout = 5.0
   - ansible-playbook configure-appache.yml --syntax-check     (#*Handler and task should have same indentation*)
   - ansible-playbook configure-appache.yml
 
- # (*Now go to host and check if the files are reflecting*)
+ #### (*Now go to host and check if the files are reflecting*)
 
 (*To check if httpd is installed*)
  -  rpmquery httpd
