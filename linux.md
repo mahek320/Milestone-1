@@ -88,7 +88,7 @@
 
 *output: drwxr-xr-x. 2 rutik devops 6 Sep  2 03:49 devops-practice*
 
-- chmod 740 devops-practice         (chaning permissions for resource)
+- chmod 740 devops-practice         (changing permissions for resource)
 
 *output: drwxr-----. 2 rutik devops 6 Sep  2 03:49 devops-practice*
 
