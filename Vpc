@@ -8,7 +8,7 @@ clicl on the created igw > actions > attach to the vpc
 
 Subnet > create subnet >my vpc 
 name : public-subnet
-zone : 1a subnet rnage cidr > 10.0.0.0/16 & 10.0.0.0/24
+zone : 1a subnet range cidr > 10.0.0.0/16 & 10.0.0.0/24
 create 
 
 create subnet > 
