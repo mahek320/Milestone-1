@@ -23,7 +23,7 @@ cd bin
 copy the public IP of server an open it on new tab with port 8080
 To resolve 403 access denied go to context.xml 
 cd..
-find /-name context.xml
+find -name context.xml
 (Here we need to edit last two files)
 open first file of the last two files with vim
 (Since the valve line is only allowing local host we will comment out those lines)
