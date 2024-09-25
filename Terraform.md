@@ -29,18 +29,22 @@ mkdir /project
 
 cd /project
 
-## vim file 
-## Naming extension for terraform file is tf
-## Create an user for access key and secret key
-## The region should be of the ami created
+## Vim file 
+#### Naming extension for terraform file is tf
+#### Create an user for access key and secret key
+#### The region should be of the ami created
 
 vim provider.tf
+
+``` tf
 
 provider "aws" {
   region     = "us-west-2"
   access_key = "my-access-key"
   secret_key = "my-secret-key"
 }
+
+```
 
 ## Terminal
 
@@ -52,8 +56,6 @@ tree -a  (*To check the generated file*)
 
 terraform init
 
-############
-
 ## Inside vim file 
 ### my ec2 code
 ### copy ami from other other resources on a different region
@@ -61,12 +63,15 @@ terraform init
 ### Name of the key should be of new region 
 ### Create new key pair from key pair option
 
+``` tf
 
 resource "aws_instance" "this" {
   ami                     = "ami-0dcc1e21636832c5d"
   instance_type           = "t2.micro"
   key_name                = "terraform-key"      # *Give name of the key pair*
 }
+
+```
 
 ## Terafform init
 
