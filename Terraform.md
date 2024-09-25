@@ -131,47 +131,70 @@ resource "aws_instance" "this" {
   
 }
 
-vim my-resurce.tf
+# To create an instance from terminal, add security groups, attach abs and volume.
+# Configure aws
+# Create a new key pair in the new region where you want to create a new instance
+# Terraform init, fmt (format), validate, plan, apply
 
-``` tf
 
-#This is my secuurity code 
+vim security.tf
 
-resource "aws_security_group" "web-server-sg" {
-  name        = "web-server-sg"
-  description = "Allow ssh and http inbound traffic and all outbound traffic"
- 
 
-  tags = {
-    Name = "web-server-sg"
+provider "aws" {
+  region = "ap-northeast-2"
+}
+
+resource "aws_security_group" "my_security_group" {
+  name        = "my-sg1"
+  description = "Allow SSH and HTTP traffic"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
-resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
-  security_group_id = aws_security_group.allow_tls.id
-  cidr_ipv4         = aws_vpc.main.cidr_block
-  from_port         = 80
-  ip_protocol       = "tcp"
-  to_port           = 80
+resource "aws_instance" "my_instance" {
+  ami                    = "ami-06f73fc34ddfd65c2" (# *Replace with a valid AMI ID for your region*)
+  instance_type          = "t2.micro"
+  key_name               = "seoul-key"
+  vpc_security_group_ids = [aws_security_group.my_security_group.id]
+
+  tags = {
+    Name = "MyInstance"
+  }
 }
 
-resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
-  security_group_id = aws_security_group.web-server-sg.id
-  cidr_ipv4         = aws_vpc.main.ipv4_cidr_block
-  from_port         = 22
-  ip_protocol       = "tcp"
-  to_port           = 22
+resource "aws_ebs_volume" "example" {
+  availability_zone = "ap-northeast-2a"
+  size              = 40
+
+  tags = {
+    Name = "HelloWorld"
+  }
 }
 
-resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
-  security_group_id = aws_security_group.allow_tls.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" # semantically equivalent to all ports
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdh"
+  volume_id   = aws_ebs_volume.example.id
+  instance_id = aws_instance.my_instance.id     (*Name of the instance created*)
 }
-
-
-```
-
 
 
 
