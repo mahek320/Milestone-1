@@ -132,10 +132,11 @@ resource "aws_instance" "this" {
 }
 
 # To create an instance from terminal, add security groups, attach abs and volume.
-# Configure aws
-# Create a new key pair in the new region where you want to create a new instance
-# Terraform init, fmt (format), validate, plan, apply
+### Configure aws
+### Create a new key pair in the new region where you want to create a new instance
+### Terraform init, fmt (format), validate, plan, apply
 
+``` tf
 
 vim security.tf
 
@@ -195,6 +196,8 @@ resource "aws_volume_attachment" "ebs_att" {
   volume_id   = aws_ebs_volume.example.id
   instance_id = aws_instance.my_instance.id     (*Name of the instance created*)
 }
+
+```
 
 
 
