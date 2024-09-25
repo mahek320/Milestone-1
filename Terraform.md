@@ -28,6 +28,7 @@ cd /project
 ## vim file 
 ## Naming extension for terraform file is tf
 ## Create an user for access key and secret key
+## The region should be of the ami created
 
 vim provider.tf
 
@@ -45,26 +46,29 @@ yum install tree -y
 
 tree -a  (*To check the generated file*)
 
-terafform init
+terraform init
 
 ############
 
 ## Inside vim file 
 ### my ec2 code
-### copy ami from other other resources 
+### copy ami from other other resources on a different region
 ### Give the name of your instance
+### Name of the key should be of new region 
+### Create new key pair from key pair option
+
 
 resource "aws_instance" "this" {
   ami                     = "ami-0dcc1e21636832c5d"
   instance_type           = "t2.micro"
-  key_name                = "terraform-key"      #*Give name of the key pair*
+  key_name                = "terraform-key"      # *Give name of the key pair*
 }
 
 ## Terafform init
 
 terraform init
 
-terraform validate 
+terraform validate (*The configuration is valid*)
 
 terraform plan
 
