@@ -136,9 +136,9 @@ resource "aws_instance" "this" {
 ### Create a new key pair in the new region where you want to create a new instance
 ### Terraform init, fmt (format), validate, plan, apply
 
-``` tf
-
 vim security.tf
+
+``` tf
 
 
 provider "aws" {
@@ -199,7 +199,17 @@ resource "aws_volume_attachment" "ebs_att" {
 
 ```
 
+terraform init 
 
+terraform fmt 
+
+terraform validate 
+
+terraform plan
+
+terraform apply 
+
+## Go check on aws ,open your instance > storage > volume > open your attached volume .
 
 
 
