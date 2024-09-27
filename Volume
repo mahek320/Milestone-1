@@ -6,10 +6,10 @@ Disk Partitioning: increase and decrease Volume size:
 4.	Open instance in terminal 
 5.	Lsblk
 6.	Df -h
-7.	Mkfs. <tab> <tab>
-8.	Mkfs.ext4 /dev/xvdb
-9.	Mkdir /data
-10.	Mount /dev/xvdb /data
+7.	mkfs. <tab> <tab>
+8.	mkfs.ext4 /dev/xvdb
+9.	mkdir /data
+10.	mount /dev/xvdb /data
 11.	Blkid >copy uuid of xvdb and paste it below 
 12.	Vim /etc/fstab {uuid = …. /data ext4 defaults 0 0)
 13.	Df -h
