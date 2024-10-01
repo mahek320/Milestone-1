@@ -40,7 +40,7 @@ vim provider.tf
 
 provider "aws" {
   region     = "us-west-2"
-  access_key = "my-access-key"
+  access_key = "my-access-key"     #add the keys
   secret_key = "my-secret-key"
 }
 
