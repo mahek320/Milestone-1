@@ -1,5 +1,5 @@
 ## Security group - All traffic
-## Install Terraform
+#### Install Terraform
 
 sudo yum install -y yum-utils shadow-utils
 
@@ -7,11 +7,11 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 
 sudo yum -y install terraform
 
-## Version
+#### Version
 
 terraform -v
 
-## Install aws cli
+#### Install aws cli
 
 ``` yml
 
@@ -23,13 +23,13 @@ sudo ./aws/install
 
 ```
 
-## Make directory
+#### Make directory
 
 mkdir /project
 
 cd /project
 
-## Vim file 
+#### Vim file 
 #### Naming extension for terraform file is tf
 #### Create an user for access key and secret key
 #### The region should be of the ami created
@@ -46,7 +46,7 @@ provider "aws" {
 
 ```
 
-## Terminal
+#### Terminal
 
 l.
 
@@ -56,12 +56,12 @@ tree -a  (*To check the generated file*)
 
 terraform init
 
-## Inside vim file 
-### my ec2 code
-### copy ami from other other resources on a different region
-### Give the name of your instance
-### Name of the key should be of new region 
-### Create new key pair from key pair option
+#### Inside vim file 
+#### my ec2 code
+#### copy ami from other other resources on a different region
+#### Give the name of your instance
+#### Name of the key should be of new region 
+#### Create new key pair from key pair option
 
 ``` tf
 
@@ -73,7 +73,7 @@ resource "aws_instance" "this" {
 
 ```
 
-## Terraform init
+#### Terraform init
 
 terraform init
 
@@ -83,13 +83,13 @@ terraform plan
 
 terraform apply 
 
-## Connect the new isntance on a new terminal 
+#### Connect the new isntance on a new terminal 
 
-## Security group (SSH, All traffic)
+#### Security group (SSH, All traffic)
 
 yum install httpd -y
 
-## Old terminal 
+#### Old terminal 
 cd /project
 
 aws configure
@@ -102,7 +102,7 @@ ll
 (*After ll you will get a file that wasn't created by you, do cat filename*)
 cat terraform.tstate
 
-# Manage tag new instance
+#### Manage tag new instance
 
 manage tag >> name
 
@@ -114,7 +114,7 @@ terraform apply
 
 terraform destroy
 
-# Old terminal 
+#### Old terminal 
 
 mkdir /mahek
 cd /project
@@ -131,10 +131,10 @@ resource "aws_instance" "this" {
   
 }
 
-# To create an instance from terminal, add security groups, attach abs and volume.
-### Configure aws
-### Create a new key pair in the new region where you want to create a new instance
-### Terraform init, fmt (format), validate, plan, apply
+#### To create an instance from terminal, add security groups, attach abs and volume.
+#### Configure aws
+#### Create a new key pair in the new region where you want to create a new instance
+#### Terraform init, fmt (format), validate, plan, apply
 
 vim security.tf
 
@@ -209,9 +209,9 @@ terraform plan
 
 terraform apply 
 
-## Go check on aws ,open your instance > storage > volume > open your attached volume.
+#### Go check on aws ,open your instance > storage > volume > open your attached volume.
 
-## Create vpc and subnet
+#### Create vpc and subnet
 
 vim vpc.tf
 
