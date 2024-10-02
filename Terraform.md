@@ -142,59 +142,59 @@ vim security.tf
 
 
 provider "aws" {
-  region = "ap-northeast-2"
+  region = "ap-south-1"
 }
-
-resource "aws_security_group" "my_security_group" {
-  name        = "my-sg1"
-  description = "Allow SSH and HTTP traffic"
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
+ 
+#security group
+resource "aws_security_group" "webserver-sg" {
+  name        = "webserver-sg"
+  description = "allow ssh and http"
+ 
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
+ 
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+ 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+ 
 }
-
-resource "aws_instance" "my_instance" {
-  ami                    = "ami-06f73fc34ddfd65c2" (# *Replace with a valid AMI ID for your region*)
-  instance_type          = "t2.micro"
-  key_name               = "seoul-key"
-  vpc_security_group_ids = [aws_security_group.my_security_group.id]
-
+ 
+#create instance
+resource "aws_instance" "EC2-instance-1" {
+  ami               = "ami-08718895af4dfa033"
+  availability_zone = "ap-south-1a"
+  instance_type     = "t2.micro"
+  security_groups   = ["${aws_security_group.webserver-sg.name}"]
+  key_name          = "trf-kp"
   tags = {
-    Name = "MyInstance"
+    Name = "EC2-instance-1"
   }
 }
-
-resource "aws_ebs_volume" "example" {
-  availability_zone = "ap-northeast-2a"
-  size              = 40
-
-  tags = {
-    Name = "HelloWorld"
-  }
+ 
+#create block storage
+resource "aws_ebs_volume" "data_vol" {
+  availability_zone = "ap-south-1a"
+  size              = 5
 }
-
-resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdh"
-  volume_id   = aws_ebs_volume.example.id
-  instance_id = aws_instance.my_instance.id     (*Name of the instance created*)
+ 
+resource "aws_volume_attachment" "EC2-instance-1-vol" {
+  device_name = "/dev/sdc"
+  volume_id   = aws_ebs_volume.data_vol.id
+  instance_id = aws_instance.EC2-instance-1.id
 }
 
 ```
