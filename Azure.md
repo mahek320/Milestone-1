@@ -6,7 +6,6 @@ go to virtual machines >> choose correct resource group >> name >> networking >>
 
 ## Code on terminal 1
 
- apt install httpd -y
  apt update -y
  apt install apache2
   cd /var/www/html
