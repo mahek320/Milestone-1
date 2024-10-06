@@ -1,3 +1,6 @@
+**Pull the Ubuntu image from Docker hub and launch a web application in the container 
+on port no. 8080 and this application should be reachable globally.**
+
 yum update -y
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
