@@ -1,4 +1,10 @@
-### *Build 3 instances t2.micro on amazon linux, controller, host-manager-1 and host-manager-2*
+
+
+
+
+## LAB 01
+
+#### *Build 3 instances t2.micro on amazon linux, controller, host-manager-1 and host-manager-2*
 - hostnamectl set-hostname controller
 - bash
 - ssh-keygen
@@ -7,13 +13,15 @@
 - vim authorized_keys
 - cat id_rsa.pub
   
-#### *Here incase of controller copy paste the public key of other two instances and paste the keys in the vim file and likewise do the same for other 2 instances to establish connection*
+#### *To establish the connection between the three instances, you need to exchange their keys. For the controller instance, copy the public keys of the other two instances and paste them into the appropriate file using vim. Repeat this process for the other two instances to complete the connection setup.*
 
-### *Controller*
+#### *Controller Terminal*
 - systemctl start sshd 
 - systemctl enable sshd
 
-#### *Use ping command to check if the connection is established between the instances and allow ICMP port in network security*
+#### *To check if the connection is established between the instances, allow the ICMP port in the security rule and then use the ping command.*
+- ip a s
+- ping (ip-address)
 
 ### *Controller -   Install ansible*
 
@@ -199,7 +207,7 @@ accelerate_connect_timeout = 5.0
 
   #### *Create vim host under etc/ansible*
 - vim hosts
-  *paste ip of the two hosts in format*
+  *paste ip of the two manager nodes in the below format*
   
    [us-server]
   
@@ -207,11 +215,12 @@ accelerate_connect_timeout = 5.0
   
 - ansible all --list-hosts
 - ansible all -m ping
+ 
   *type yes 2 times*
   
-#### *When the output is green command is executed, when gold that means ansible did changes in the remote machine and when in red it indicates error*
+#### *When the output is green, it indicates that the command was executed successfully. When it is gold, it means Ansible made changes on the remote machine. When it is red, it indicates an error.*
 
-### *Configure web server*
+### *Inorder to configure web server*
  - cd /etc/ansible
  - vim configure.yml
 
@@ -245,10 +254,13 @@ accelerate_connect_timeout = 5.0
        
  - ansible-playbook configure.yml --syntax-check
  - cat >index.html
- - ansible-playbook configure.yml  
-   #### *paste the public ip of the host*
+ - ansible-playbook configure.yml
+   
+   #### *Paste the public ip of the host on the browser*
 
-   ### *To make a group and a user using script*
+## LAB 02
+
+   ## *To make a group and a user using script in ansible.*
 
     vim playbook.yml
 
@@ -287,12 +299,15 @@ accelerate_connect_timeout = 5.0
 
 - ansible-playbook playbook.yml
  
-#### *Go to host and run the below command to check the user created inside group*
+#### *Go to manager node and run the below command to check the user created inside group*
 
 - cat /etc/group
 
+## LAB 03
+
 ### *Handler*
-- vim configure-appache.yml   (*Inside ansible directory*)
+- vim configure-appache.yml   (*Inside ansible directory cd /etc/ansible*)
+
 (*Paste the below content*)
 
 ```yaml
@@ -342,10 +357,13 @@ accelerate_connect_timeout = 5.0
   - cd /etc/ansible
   - vim /etc/httpd/conf/httpd.conf     (#*Add a comment at start #Mahek Shetty and then save it*)
   - ll              (#*Check for index.html file*)
-  - ansible-playbook configure-appache.yml --syntax-check     (#*Handler and task should have same indentation*)
+  - ansible-playbook configure-appache.yml --syntax-check
+
+###### *Note* : *Handler and task should have same indentation*
+
   - ansible-playbook configure-appache.yml
 
- #### (*Now go to host and check if the files are reflecting*)
+ #### (*Now go to manager node and check if the files are reflecting*)
 
 (*To check if httpd is installed*)
  -  rpmquery httpd
@@ -363,13 +381,16 @@ accelerate_connect_timeout = 5.0
  - ip a s
  - curl http://172.31.34.36
 
+
+## LAB 04 
+
 ### *Configure AWS with ansible*
 
 -  cd /etc/ansible
--  vim creds.yml        (#*Paste the aws_access_key: and aws_secret_key: *)
+-  vim creds.yml        (*Paste the aws_access_key: and aws_secret_key:*)
 -  vim ec2.yml
 
-#### *Here change the ami, region, security group, key name*
+#### *Paste the below content in the file and change the ami, region, security group and key name*
 
 ```yaml
   ---
