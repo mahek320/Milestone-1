@@ -1,17 +1,18 @@
 
 ## *Ansible*
 
-#### *Ansible lets you automate virtually any task. Ansible is an open-source automation tool developed by Redhat that is meant for simplifying the configuration management, application deployment, and automation of tasks.*
+**Ansible lets you automate virtually any task. Ansible is an open-source automation tool developed by Redhat that is meant for simplifying the configuration management, application deployment, and automation of tasks.**
 
-#### *Ansible uses simple, human-readable scripts called playbooks to automate your tasks.*
+**Ansible uses simple, human-readable scripts called playbooks to automate your tasks.**
 
-#### *In Ansible, an inventory is a file with specifying the information of hosts that going to be managed. It contains information such as hostnames, IP addresses, and groups of organization.*
+**In Ansible, an inventory is a file with specifying the information of hosts that going to be managed. It contains information such as hostnames, IP addresses, and groups of organization.**
 
-#### *Ansible is built on top of Python.*
+**Ansible is built on top of Python.**
 
-#### *Handlers in Ansible are tasks that are triggered by other tasks, usually used to respond for the changes that require start , stop , reload or restart the service actions. They are defined in the playbook and executed as per need.*
+**Handlers in Ansible are tasks that are triggered by other tasks, usually used to respond for the changes that require start , stop , reload or restart the service actions. They are defined in the playbook and executed as per need.**
 
 #### *In this GitHub repository, we have performed four labs:*
+
 1. **LAB 01** - Configured a web server.
 2. **LAB 02** - Created a group and a user using a script in Ansible.
 3. **LAB 03** - Implemented a handler.
@@ -29,24 +30,24 @@
 - vim authorized_keys
 - cat id_rsa.pub
   
-#### *To establish the connection between the three instances, you need to exchange their keys. For the controller instance, copy the public keys of the other two instances and paste them into the appropriate file using vim. Repeat this process for the other two instances to complete the connection setup.*
+*To establish the connection between the three instances, you need to exchange their keys. For the controller instance, copy the public keys of the other two instances and paste them into the appropriate file using vim. Repeat this process for the other two instances to complete the connection setup.*
 
-#### *Controller Terminal*
+*Controller Terminal*
 - systemctl start sshd 
 - systemctl enable sshd
 
-#### *To check if the connection is established between the instances, allow the ICMP port in the security rule and then use the ping command.*
+*To check if the connection is established between the instances, allow the ICMP port in the security rule and then use the ping command.*
 - ip a s
 - ping (ip-address)
 
-### *Controller -   Install ansible*
+*Controller -   Install ansible*
 
 - yum install ansible* -y
 - ansible --version
 - cd /etc/ansible/
 - vim ansible.cfg
 
-### *Paste the below content inside the vim file*
+**Paste the below content inside the vim file**
 
 ```cfg
 
@@ -234,13 +235,13 @@ accelerate_connect_timeout = 5.0
  
   *type yes 2 times*
   
-#### *When the output is green, it indicates that the command was executed successfully. When it is gold, it means Ansible made changes on the remote machine. When it is red, it indicates an error.*
+**Note** : *When the output is green, it indicates that the command was executed successfully. When it is gold, it means Ansible made changes on the remote machine. When it is red, it indicates an error.*
 
-### *Inorder to configure web server*
+*Inorder to configure web server*
  - cd /etc/ansible
  - vim configure.yml
 
-#### *Paste the below content inside vim file*
+**Paste the below content inside vim file**
 
 ```yaml
 
@@ -272,15 +273,15 @@ accelerate_connect_timeout = 5.0
  - cat >index.html
  - ansible-playbook configure.yml
    
-   #### *Paste the public ip of the host on the browser*
+  *Paste the public ip of the host on the browser*
 
 ## LAB 02
 
-   ## *To make a group and a user using script in ansible.*
+ ### *To make a group and a user using script in ansible.*
 
     vim playbook.yml
 
-#### *Paste the below content inside the vim file*
+**Paste the below content inside the vim file**
 
 ```yaml
 ---
@@ -379,7 +380,7 @@ accelerate_connect_timeout = 5.0
 
   - ansible-playbook configure-appache.yml
 
- #### (*Now go to manager node and check if the files are reflecting*)
+*Now go to manager node and check if the files are reflecting*
 
 (*To check if httpd is installed*)
  -  rpmquery httpd
@@ -401,12 +402,11 @@ accelerate_connect_timeout = 5.0
 ## LAB 04 
 
 ### *Configure AWS with ansible*
-
 -  cd /etc/ansible
 -  vim creds.yml        (*Paste the aws_access_key: and aws_secret_key:*)
 -  vim ec2.yml
 
-#### *Paste the below content in the file and change the ami, region, security group and key name*
+**Paste the below content in the file and change the ami, region, security group and key name**
 
 ```yaml
   ---
