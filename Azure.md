@@ -4,7 +4,7 @@
 
 **LAB 02** : Create a cluster via dashboard and terminal on azure
 
-**LAB 01**
+## LAB 01 
 
 Go to azure >> virtual network >> resource group >> create new >> create and review
 
@@ -79,8 +79,10 @@ authType Key
  ls
 
  Paste the frontend public IP on your terminal to expose Apache server on port number 80.
+ 
 
-**LAB 02**
+## LAB 02
+
 
 To Create AKS on Azure dashboard , go to search and and search AKS >> CREATE >> node pools >> size >> add >> review and create
 
