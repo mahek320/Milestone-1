@@ -10,6 +10,10 @@
 
 **A ReplicaSet in Kubernetes is a resource that ensures a specified number of identical pods are running at any given time.**
 
+**In this repository we have deployed a web application in the Kubernetes pod and created a replica set.In any case 
+load is going to increase on your replica set so we have also performed autoscaling and manual scaling to increase or decrease the number of replicas of the 
+pods. We have also performed rollling updates**
+
 Create an EC2 instance named EKS-inst with AMI type Ubuntu, instance type t2.micro, allow all traffic in the security group, and configure storage to 1x10 GiB. Create a role with full access to AmazonEC2ContainerServiceFullAccess, AmazonEKSClusterPolicy, and IAMFullAccess.
 
 **unzip file**
