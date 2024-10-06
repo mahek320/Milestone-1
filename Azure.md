@@ -32,7 +32,7 @@ Give port access >> click on instance >> networking >> network setting >> create
 
 load balancer >> create >> frontend ip >> name >> save >> backend pool >> select ip >> review + create >> create >> view health probes >> name >> save >> load balancing rules >> add >> port and backend port give 80 >> save >> search storage accounts >> create a new storage account >> review and create >> click on the storage created >> upload a file >> create new container >> upload
 
-**Terminal 1**
+**Terminal**
 
  cat /etc/*-release
  
@@ -50,7 +50,7 @@ load balancer >> create >> frontend ip >> name >> save >> backend pool >> select
  
  vim fuse_connection.cfg
 
-## Paste this inside vim with the storage account name 
+Paste this inside vim with the storage account name 
 
 accountName storageb05
 
