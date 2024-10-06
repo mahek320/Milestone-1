@@ -11,17 +11,17 @@ After successfully pushing image to ECR
 [defaults]
 inventory = /etc/ansible/hosts
 ```
-7. Add your managed nodes with private_ip_addr with below format
+6. Add your managed nodes with private_ip_addr with below format
 ```
 [servers]
 server1 ansible_host=your_server_ip
 server2 ansible_host=your_server_ip
 ```
-6. Generate ssh-key : *ssh-keygen*
-7. Copy ssh-key to all managed-nodes (after changing node's sshd_config settings) : *ssh-copy-id root@your_server_ip*
-8. Check all connections by ping : *ansible all -m ping*
-9. Install pip on kubernetes server and then install openshift kubernetes : *pip install openshift kubernetes*
-10. Create a directory on ansible server and create one ansible-playbook
+7. Generate ssh-key : *ssh-keygen*
+8. Copy ssh-key to all managed-nodes (after changing node's sshd_config settings) : *ssh-copy-id root@your_server_ip*
+9. Check all connections by ping : *ansible all -m ping*
+10. Install pip on kubernetes server and then install openshift kubernetes : *pip install openshift kubernetes*
+11. Create a directory on ansible server and create one ansible-playbook
 ```
 ---
 - hosts: 172.31.5.42
@@ -69,7 +69,7 @@ server2 ansible_host=your_server_ip
       register: service_output
 ```
 
-11. Create service.yml file in the same directory
+12. Create service.yml file in the same directory
 ```
 apiVersion: v1
 kind: Service
@@ -87,4 +87,4 @@ spec:
 
   type: LoadBalancer
 ```
-12. manually run ansible-playbook and check if service is created in kubernetes server, and get external ip of service to host application.
+13. Manually run ansible-playbook and check if service is created in kubernetes server, and get external ip of service to host application.
