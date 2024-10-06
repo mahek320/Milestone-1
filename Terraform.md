@@ -49,9 +49,8 @@ Make directory
 - cd /project
 
 **Vim file**
+
 -> Naming extension for terraform file is tf
--> Create an user for access key and secret key
--> The region should be of the ami created
 
 vim provider.tf
 
