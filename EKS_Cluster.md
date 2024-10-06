@@ -265,7 +265,7 @@ Go to your previous cluster >> install nodes >> Do the deployment and edit image
 
 vim mahek-deployment.yml
 
-``yml
+```yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
