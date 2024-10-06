@@ -1,9 +1,13 @@
 ## *EKS-Cluster*
 
 **A Kubernetes cluster consists of a control plane plus a set of worker machines, called nodes, that run containerized applications. Every cluster needs at least one worker node in order to run Pods.**
+
 **Namespaces are a way to divide cluster resources between multiple users**
+
 **There are four namespace default,kube-node-lease,kube-public,kube-system**
+
 **In Kubernetes, a pod is the smallest deployable unit that can be created and managed. Pods are used to run applications and can be configured to run a single container or multiple tightly coupled containers that need to share resources.**
+
 **A ReplicaSet in Kubernetes is a resource that ensures a specified number of identical pods are running at any given time.**
 
 Create an EC2 instance named EKS-inst with AMI type Ubuntu, instance type t2.micro, allow all traffic in the security group, and configure storage to 1x10 GiB. Create a role with full access to AmazonEC2ContainerServiceFullAccess, AmazonEKSClusterPolicy, and IAMFullAccess.
