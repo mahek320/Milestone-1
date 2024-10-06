@@ -281,7 +281,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: (*paste the URL*)
+        image: (*paste the URL of the image*)
         ports:
         - containerPort: 80
   ```
