@@ -249,19 +249,22 @@ vim Dockerfile
 
 (*Now on dashboard go to AWS Elastic Container Registry > name it as lti-devops > keep it mutable > create > click on lti devops > view push command > copy the commands uptill docker build -t lti-devops*)
 
-   docker build -t lti-devops .
+   docker build -t lti-devops 
+   
    docker images
    
 (*These are the commands from the ECR of dashboard*)
    
 docker tag lti-devops:latest 481665131265.dkr.ecr.us-west-1.amazonaws.com/lti-devops:latest
+
 docker push 481665131265.dkr.ecr.us-west-1.amazonaws.com/lti-devops:latest
 
 (*Then go to ECR >> click on the lti-devops >> action >> images >> copy URL to deploy in the pod*)
 
 Go to your previous cluster >> install nodes >> Do the deployment and edit image with the copied URL
 
- - vim mahek-deployment.yml
+vim mahek-deployment.yml
+
 ``yml
 apiVersion: apps/v1
 kind: Deployment
