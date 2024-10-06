@@ -12,7 +12,7 @@ go to resource >> subnets >> 1 private and 1 public >> add
 
 Go to virtual machines >> choose correct resource group >> name >> networking >> subnet >> 2 private and 2 public for 4 instances >> create >> download private key >> go to resource >>  connect >> native ssh >> copy ssh and replace key name after i
 
-**Terminal 1**
+Terminal 1
 
  apt update -y
  
@@ -32,7 +32,7 @@ Give port access >> click on instance >> networking >> network setting >> create
 
 load balancer >> create >> frontend ip >> name >> save >> backend pool >> select ip >> review + create >> create >> view health probes >> name >> save >> load balancing rules >> add >> port and backend port give 80 >> save >> search storage accounts >> create a new storage account >> review and create >> click on the storage created >> upload a file >> create new container >> upload
 
-**Terminal**
+Terminal
 
  cat /etc/*-release
  
@@ -60,7 +60,7 @@ containerName newcontainer
 
 authType Key
 
- **Terminal**
+ Terminal
  
   sudo chmod 600 fuse_connection.cfg
   
@@ -82,9 +82,9 @@ authType Key
 
 **LAB 02**
 
-**To Create AKS on Azure dashboard , go to search and and search AKS >> CREATE >> node pools >> size >> add >> review and create**
+To Create AKS on Azure dashboard , go to search and and search AKS >> CREATE >> node pools >> size >> add >> review and create
 
-**Create cluster via terminal**
+Create cluster via terminal
 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
