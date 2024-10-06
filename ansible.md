@@ -20,7 +20,7 @@
 
 ## LAB 01
 
-#### *Build 3 instances t2.micro on amazon linux, controller, host-manager-1 and host-manager-2*
+*Build 3 instances t2.micro on amazon linux, controller, host-manager-1 and host-manager-2*
 - hostnamectl set-hostname controller
 - bash
 - ssh-keygen
