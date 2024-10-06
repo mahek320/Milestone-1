@@ -1,18 +1,34 @@
 ## TERRAFORM 
 
+**Terraform is a popular infrastructure-as-code tool that allows you to automate the provisioning and management of infrastructure resources.**
+
+**Infrastructure as Code (IaC) is a method of managing and provisioning IT infrastructure using code, rather than manual configuration.**
+
+**It uses configuration files written in the HashiCorp Configuration Language (HCL) to define the desired state of your infrastructure**
+
+**Terraform commands**
+
+**terraform init**  -  It prepares the current working directory for use with Terraform
+
+**terraform fmt** - This helps code readability and ensures all configuration files are formatted the same, no matter which team member is writing the file.
+
+**terraform validate** - By using this command, developers can catch and solve configuration errors before attempting to apply changes to the infrastructure.
+
+**terraform plan** -  Shows changes needed by the current configuration 
+
+**terraform apply** - Implements the changes 
 
 
-#### Install Terraform
 
-sudo yum install -y yum-utils shadow-utils
+Install Terraform
+- sudo yum install -y yum-utils shadow-utils
 
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+- sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 
-sudo yum -y install terraform
+- sudo yum -y install terraform
 
-#### Version
-
-terraform -v
+Version
+- terraform -v
 
 #### Install aws cli
 
@@ -26,16 +42,16 @@ sudo ./aws/install
 
 ```
 
-#### Make directory
+Make directory
 
-mkdir /project
+- mkdir /project
 
-cd /project
+- cd /project
 
-#### Vim file 
-#### Naming extension for terraform file is tf
-#### Create an user for access key and secret key
-#### The region should be of the ami created
+**Vim file**
+-> Naming extension for terraform file is tf
+-> Create an user for access key and secret key
+-> The region should be of the ami created
 
 vim provider.tf
 
@@ -49,82 +65,25 @@ provider "aws" {
 
 ```
 
-#### Terminal
+**Note** : If you are running aws configure, you do not need to paste the above content into your file.
 
-l.
+Terminal
+- yum install tree -y
 
-yum install tree -y
+- tree -a  (*To check the generated file*)
 
-tree -a  (*To check the generated file*)
+- terraform init
 
-terraform init
+**Inside provider.tf file using vim** 
 
-#### Inside vim file 
-#### my ec2 code
-#### copy ami from other other resources on a different region
-#### Give the name of your instance
-#### Name of the key should be of new region 
-#### Create new key pair from key pair option
+To create an instance through the terminal:
+- Specify the name of your instance.
+- Paste the AMI.
+- Enter the instance type you wish to add.
+- Enter the key-pair name.
+ 
 
 ``` tf
-
-resource "aws_instance" "this" {
-  ami                     = "ami-0dcc1e21636832c5d"
-  instance_type           = "t2.micro"
-  key_name                = "terraform-key"      # *Give name of the key pair*
-}
-
-```
-
-#### Terraform init
-
-terraform init
-
-terraform validate (*The configuration is valid*)
-
-terraform plan
-
-terraform apply 
-
-#### Connect the new isntance on a new terminal 
-
-#### Security group (SSH, All traffic)
-
-yum install httpd -y
-
-#### Old terminal 
-cd /project
-
-aws configure
-
-vim provider.tf (*Backspace the first para*)
-
-terraform destroy
-
-ll
-(*After ll you will get a file that wasn't created by you, do cat filename*)
-cat terraform.tstate
-
-#### Manage tag new instance
-
-manage tag >> name
-
-terraform fmt
-
-cat provider.tf
-
-terraform apply 
-
-terraform destroy
-
-#### Old terminal 
-
-mkdir /mahek
-cd /project
-cd provider.tf /mahek
-cd /mahek
-mv provider.tf my-resource.tf 
-vim my-resource.tf
 
 resource "aws_instance" "this" {
   ami                     = "ami-0dcc1e21636832c5d"
@@ -133,16 +92,29 @@ resource "aws_instance" "this" {
   key_name                = "terraform-key"      # *Give name of the key pair*
   
 }
+```
+- terraform init
 
-#### To create an instance from terminal, add security groups, attach abs and volume.
-#### Configure aws
-#### Create a new key pair in the new region where you want to create a new instance
-#### Terraform init, fmt (format), validate, plan, apply
+- terraform fmt
 
-vim security.tf
+- terraform validate (*The configuration is valid*)
+
+- terraform plan
+
+- terraform apply 
+
+Check the dashboard to see if your instance has been created, and then connect to it using the new terminal.
+
+To delete the terraform created by you
+- terraform destroy
+
+**Inorder to add security group in the instance created by you (SSH, All traffic)**
+- yum install httpd -y
+
+
+vim provider.tf
 
 ``` tf
-
 
 provider "aws" {
   region = "ap-south-1"
@@ -187,7 +159,12 @@ resource "aws_instance" "EC2-instance-1" {
     Name = "EC2-instance-1"
   }
 }
- 
+
+```
+**To add a block storage and attach volume**
+vim provider.tf 
+
+```tf
 #create block storage
 resource "aws_ebs_volume" "data_vol" {
   availability_zone = "ap-south-1a"
@@ -212,32 +189,9 @@ terraform plan
 
 terraform apply 
 
-#### Go check on aws ,open your instance > storage > volume > open your attached volume.
+Inorder to check the changess go to your aws dashboard > open your instance > storage > volume > open your attached volume.
 
-#### Create vpc and subnet
-
-vim vpc.tf
-
-``` tf
-resource "aws_vpc" "main" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
-
-  tags = {
-    Name = "main"
-  }
-}
-resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.1.0/24"
-
-  tags = {
-    Name = "Main"
-  }
-}
-
-```
-
+**Using Terraform, create a custom VPC with two subnets: one public and one private. Then, create two instances within these subnets: a web server and a database server.**
 
 ```tf
 
@@ -473,9 +427,6 @@ resource "aws_instance" "my-vpc-private-instance" {
   }
 
 }
-
-has context menu
- 
 
 ```
 
