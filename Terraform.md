@@ -18,6 +18,11 @@
 
 **terraform apply** - Implements the changes 
 
+In this GitHub repository, we have completed four labs:
+1. **LAB 01** - Created an instance.
+2. **LAB 02** - Created an instance and added a security group.
+3. **LAB 03** - Added block storage and attached a volume.
+4. **LAB 04** - Created a VPC and subnet.
 
 
 Install Terraform
@@ -81,10 +86,11 @@ To create an instance through the terminal:
 - Enter the instance type you wish to add.
 - Enter the key-pair name.
  
+**LAB 01**
 
 ``` tf
 
-resource "aws_instance" "this" {
+resource "aws_instance" "EC2" {
   ami                     = "ami-0dcc1e21636832c5d"
   instance_type           = "t2.micro"
   availability_zone       = "us-east-1a"
@@ -106,6 +112,8 @@ Check the dashboard to see if your instance has been created, and then connect t
 
 To delete the terraform created by you
 - terraform destroy
+
+**LAB 02**
 
 **Inorder to add security group in the instance created by you (SSH, All traffic)**
 - yum install httpd -y
@@ -159,6 +167,8 @@ resource "aws_instance" "EC2-instance-1" {
 }
 
 ```
+**LAB 03**
+
 **To add a block storage and attach volume**
 
 vim provider.tf 
@@ -189,6 +199,8 @@ terraform plan
 terraform apply 
 
 Inorder to check the changess go to your aws dashboard > open your instance > storage > volume > open your attached volume.
+
+**LAB 04**
 
 **Using Terraform, create a custom VPC with two subnets: one public and one private. Then, create two instances within these subnets: a web server and a database server.**
 
