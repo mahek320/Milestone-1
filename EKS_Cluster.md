@@ -132,7 +132,7 @@ kubectl get pod -o wide
 
 kubectl scale --replicas=9 -f replicaset.yml
 
-- kubectl get rs
+kubectl get rs
 
 **When You want to delete cluster**
 
@@ -209,12 +209,12 @@ sudo ./aws/install
  
 *Install Docker*
 
- - yum install docker -y
- - docker info
- - systemctl start  docker
- - systemctl enable docker
- - docker info
- - 
+yum install docker -y
+docker info
+systemctl start  docker
+systemctl enable docker
+docker info
+
 *ECR*
 
 wget https://www.free-css.com/assets/files/free-css-templates/download/page295/antique-cafe.zip
