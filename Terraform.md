@@ -160,6 +160,7 @@ resource "aws_instance" "EC2-instance-1" {
 
 ```
 **To add a block storage and attach volume**
+
 vim provider.tf 
 
 ```tf
