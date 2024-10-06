@@ -1,5 +1,0 @@
-mvn clean install cleans everything that has already been built by maven and rebuilds everything as specified by pom.xml.
-
-git merge when you want to preserve the complete history and context of changes.
-
-git rebase when you want a cleaner, linear history and are working on a feature branch that hasn’t been shared with others yet.
