@@ -12,7 +12,6 @@
 **Handlers in Ansible are tasks that are triggered by other tasks, usually used to respond for the changes that require start , stop , reload or restart the service actions. They are defined in the playbook and executed as per need.**
 
 #### *In this GitHub repository, we have performed four labs:*
-
 1. **LAB 01** - Configured a web server.
 2. **LAB 02** - Created a group and a user using a script in Ansible.
 3. **LAB 03** - Implemented a handler.
@@ -40,8 +39,7 @@
 - ip a s
 - ping (ip-address)
 
-*Controller -   Install ansible*
-
+*Controller - Install ansible*
 - yum install ansible* -y
 - ansible --version
 - cd /etc/ansible/
@@ -317,7 +315,6 @@ accelerate_connect_timeout = 5.0
 - ansible-playbook playbook.yml
  
 #### *Go to manager node and run the below command to check the user created inside group*
-
 - cat /etc/group
 
 ## LAB 03
