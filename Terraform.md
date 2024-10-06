@@ -110,7 +110,6 @@ To delete the terraform created by you
 **Inorder to add security group in the instance created by you (SSH, All traffic)**
 - yum install httpd -y
 
-
 vim provider.tf
 
 ``` tf
