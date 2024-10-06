@@ -444,7 +444,7 @@ accelerate_connect_timeout = 5.0
 
 **Note** : Due to multiple control z and control d many swap files(duplicate files are created) and thus needs to be removed
 
- >> go to terminal >> etc/ansible >> ls -a (shows swap files) >> rm -rf (hostfiles)
+- >> go to terminal >> etc/ansible >> ls -a (shows swap files) >> rm -rf (hostfiles)
 
 
 
