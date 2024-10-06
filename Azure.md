@@ -36,9 +36,7 @@ load balancer >> create >> frontend ip >> name >> save >> backend pool >> select
 
  cat /etc/*-release
  
- sudo wget
- 
- https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+ sudo wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
  
  sudo wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
  
@@ -55,8 +53,11 @@ load balancer >> create >> frontend ip >> name >> save >> backend pool >> select
 ## Paste this inside vim with the storage account name 
 
 accountName storageb05
+
 accountKey "go to storage , under security and networking we will get access keys"
+
 containerName newcontainer
+
 authType Key
 
  **Terminal**
