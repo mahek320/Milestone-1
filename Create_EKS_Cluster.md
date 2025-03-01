@@ -40,8 +40,8 @@ sudo ./aws/install
 ```sh
 aws configure
 ```
-- Enter region (e.g., `us-east-1`)
-- Enter default output format as `table`
+- Enter region (e.g., us-east-1)
+- Enter default output format as table
 
 ### Install EKS Tool
 ```sh
@@ -50,7 +50,7 @@ sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 ```
 
-### Install `kubectl`
+### Install kubectl
 ```sh
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -61,7 +61,7 @@ kubectl version --client
 ```sh
 eksctl create cluster --name my-cluster --region us-west-1 --version 1.29 --vpc-public-subnets subnet-ExampleID1,subnet-ExampleID2 --without-nodegroup
 ```
-(*Replace `ExampleID1` and `ExampleID2` with actual subnet IDs from the VPC dashboard.*)
+(*Replace ExampleID1 and ExampleID2 with actual subnet IDs from the VPC dashboard.*)
 
 ### Create Node Group
 ```sh
@@ -79,7 +79,7 @@ eksctl create nodegroup \
 --ssh-access \
 --ssh-public-key /root/.ssh/id_rsa.pub
 ```
-(*Replace `subnet-XXXXX1` and `subnet-XXXXX2` with actual subnet IDs.*)
+(*Replace subnet-XXXXX1 and subnet-XXXXX2 with actual subnet IDs.*)
 
 ### Delete Cluster
 ```sh
@@ -89,7 +89,7 @@ eksctl delete cluster --name my-cluster
 ---
 
 ## Create a ReplicaSet
-### Create `replicaset.yml`
+### Create replicaset.yml
 ```yml
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -140,7 +140,7 @@ kubectl get rs
 ---
 
 ## Deployments
-### Create `mahek-deployment.yml`
+### Create mahek-deployment.yml
 ```yml
 apiVersion: apps/v1
 kind: Deployment
@@ -193,7 +193,7 @@ docker info
 ```
 
 ### Create & Push Docker Image
-#### Create `Dockerfile`
+#### Create Dockerfile
 ```Dockerfile
 FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y apache2
@@ -208,10 +208,10 @@ docker build -t lti-devops .
 docker tag lti-devops:latest <ECR-URL>/lti-devops:latest
 docker push <ECR-URL>/lti-devops:latest
 ```
-(*Replace `<ECR-URL>` with your actual Elastic Container Registry URL.*)
+(*Replace <ECR-URL> with your actual Elastic Container Registry URL.*)
 
 ### Deploy Docker Image in EKS
-Update `mahek-deployment.yml` with ECR image:
+Update mahek-deployment.yml with ECR image:
 ```yml
 image: <ECR-URL>/lti-devops:latest
 ```
