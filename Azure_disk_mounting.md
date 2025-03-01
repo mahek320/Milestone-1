@@ -1,3 +1,4 @@
+
 ## **Azure VM Disk Mounting and Storage Expansion**
 
 1. **Open Instance in Terminal**  
@@ -48,4 +49,13 @@
 
 ### **Increase Volume Size**
 
-10. **Modify Volume in AWS Console
+10. **Modify Volume**  
+    - Go to **Volumes** > **Actions** > **Modify Volume**  
+    - Change Size to **10 GiB**  
+
+11. **Resize Filesystem**  
+    ```sh
+    resize2fs /dev/xvdb
+    df -h
+    ```
+
