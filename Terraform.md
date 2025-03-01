@@ -1,10 +1,10 @@
 ## TERRAFORM 
 
-**Terraform is a popular infrastructure-as-code tool that allows you to automate the provisioning and management of infrastructure resources.**
+**Terraform** is a popular Infrastructure-as-Code (IaC) tool that allows you to automate the provisioning and management of infrastructure resources.
 
-**Infrastructure as Code (IaC) is a method of managing and provisioning IT infrastructure using code, rather than manual configuration.**
+**Infrastructure as Code (IaC)**: Managing IT infrastructure using code instead of manual configuration.
 
-**It uses configuration files written in the HashiCorp Configuration Language (HCL) to define the desired state of your infrastructure**
+**HashiCorp Configuration Language (HCL)**: Used in Terraform configuration files to define infrastructure.
 
 **Terraform commands**
 
