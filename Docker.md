@@ -1,5 +1,5 @@
 LAB 01: Deploy a Web Application in a Docker Container<br>
-This lab demonstrates how to:<br>
+This lab demonstrates how to:<br><br>
 ✅ Pull the Ubuntu image from Docker Hub<br>
 ✅ Launch a web application in a container on port 8080<br>
 ✅ Make the application globally accessible<br>
