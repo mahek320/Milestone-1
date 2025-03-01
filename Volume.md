@@ -1,7 +1,7 @@
 
 # Disk Partitioning: Increase and Decrease Volume Size
 
-**1. Create EC2 Instance**\
+1\. Create EC2 Instance\
 2\. Create volume > gp2 > 5 GiB > 100/3000 > Create > Name: data-disk\
 3\. Select volume > Attach volume to the instance created > /dev/sdb\
 4\. Open instance in terminal\
