@@ -1,28 +1,58 @@
-## Ansible-EKS 
+# 🚀 Ansible-EKS Deployment Guide  
 
-After successfully pushing image to ECR
+After successfully **pushing the image to ECR**, follow these steps to set up Ansible with EKS.  
 
-1. Create one ansible server and one kubernetes server
-2. Do kubectl and eksctl installation on kubernetes server and create cluster with nodegroup
-3. Do ansible installation on ansible server : *sudo apt install ansible -y*
-4. Create an inventory file : *sudo vim /etc/ansible/hosts*
-5. If you are using another name for inventory file, and default command in ansible.cfg file as below:
+
+1️⃣ Set Up Required Servers<br>
+Ansible Server → Used for automation<br>
+Kubernetes Server → Hosts the cluster<br>
+
+2️⃣ Install kubectl & eksctl on Kubernetes Server<br>
+Ensure kubectl and eksctl are installed, then create an EKS cluster with a node group.<br>
+
+3️⃣ Install Ansible on Ansible Server<br>
+```sh
+sudo apt install ansible -y
 ```
+4️⃣ Configure Ansible Inventory File<br>
+Create an inventory file:
+```sh
+sudo vim /etc/ansible/hosts
+```
+If using a custom inventory file, define it in ansible.cfg:<br>
+```sh
 [defaults]
 inventory = /etc/ansible/hosts
 ```
-6. Add your managed nodes with private_ip_addr with below format
-```
+5️⃣ Add Managed Nodes to Inventory<br>
+Specify the private IP addresses of the nodes:<br>
+```sh
 [servers]
 server1 ansible_host=your_server_ip
 server2 ansible_host=your_server_ip
 ```
-7. Generate ssh-key : *ssh-keygen*
-8. Copy ssh-key to all managed-nodes (after changing node's sshd_config settings) : *ssh-copy-id root@your_server_ip*
-9. Check all connections by ping : *ansible all -m ping*
-10. Install pip on kubernetes server and then install openshift kubernetes : *pip install openshift kubernetes*
-11. Create a directory on ansible server and create one ansible-playbook
+6️⃣ Setup SSH Keys for Secure Connections
+Generate ssh-key : 
+```sh
+*ssh-keygen*
 ```
+Copy the SSH key to managed nodes (after updating sshd_config settings):<br>
+```sh
+ssh-copy-id root@your_server_ip
+```
+Verify connectivity:<br>
+```sh
+ansible all -m ping
+```
+7️⃣ Install Kubernetes Python Libraries<br>
+On the Kubernetes server, install the required libraries:<br>
+```sh
+pip install openshift kubernetes
+```
+
+8️⃣ Create Ansible Playbook for Kubernetes Deployment<br>
+On the Ansible server, create a directory and a playbook (deploy.yml):<br>
+```sh
 ---
 - hosts: 172.31.5.42
   gather_facts: no
@@ -68,9 +98,10 @@ server2 ansible_host=your_server_ip
       command: kubectl apply -f /tmp/service.yml
       register: service_output
 ```
+9️⃣ Create service.yml File<br>
+This file defines the Kubernetes Service that exposes the application.<br>
 
-12. Create service.yml file in the same directory
-```
+```sh
 apiVersion: v1
 kind: Service
 metadata:
@@ -87,4 +118,13 @@ spec:
 
   type: LoadBalancer
 ```
-13. Manually run ansible-playbook and check if service is created in kubernetes server, and get external ip of service to host application.
+🔟 Deploy and Verify<br>
+Run the Ansible playbook manually:<br>
+```sh
+ansible-playbook deploy.yml
+```
+Check if the service is created on the Kubernetes server:<br>
+```sh
+kubectl get services
+```
+Retrieve the External IP of the service and use it to host the application.
