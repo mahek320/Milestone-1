@@ -1,15 +1,22 @@
 
-## *Ansible*
+# 🚀 Ansible: Automation Made Simple  
 
-**Ansible lets you automate virtually any task. Ansible is an open-source automation tool developed by Redhat that is meant for simplifying the configuration management, application deployment, and automation of tasks.**
+**Ansible lets you automate virtually any task. Ansible is an open-source automation tool developed by Redhat that is meant for simplifying the configuration management, application deployment, and automation of tasks.It is built on top of Python.**
 
-**Ansible uses simple, human-readable scripts called playbooks to automate your tasks.**
+## **📜 Ansible Playbooks**  
+- **Playbooks** are written in **YAML** and define the tasks to be executed on remote systems.  
+- They **simplify automation** by making configurations **declarative and reusable**
 
-**In Ansible, an inventory is a file with specifying the information of hosts that going to be managed. It contains information such as hostnames, IP addresses, and groups of organization.**
+## **📂 Ansible Inventory**   
+- In Ansible, an **inventory** is a file with specifying the information of **hosts** that going to be managed.
+- It contains information such as **hostnames, IP addresses, groups of hosts.**
 
-**Ansible is built on top of Python.**
+## 🔄 **Ansible Handlers** 
+- **Handlers** in Ansible are tasks that are triggered by other tasks, usually used to respond for the changes that require **start , stop , reload or restart the service actions**.
+- They are defined in the playbook and executed as per need.**
 
-**Handlers in Ansible are tasks that are triggered by other tasks, usually used to respond for the changes that require start , stop , reload or restart the service actions. They are defined in the playbook and executed as per need.**
+
+
 
 #### *In this GitHub repository, we have performed four labs:*
 1. **LAB 01** - Configured a web server.
