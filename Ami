@@ -1,0 +1,38 @@
+Ami 
+Create Instance 
+Add security group http
+Open terminal :
+>yum update -y
+>yum install httpd -y
+>rpmquery httpd
+>cd /var/www/html/
+>echo "This is my web server" > index.html
+>ll
+>cat index.html
+>cd
+>systemctl start httpd
+>systemctl status httpd
+>systemctl enable httpd
+>curl http://localhost
+>ip a s
+>curl http://ipaddress
+>yum install vsftpd -y
+>yum install cifs-utils -y
+>yum install nfs-utils -y
+>yum install tree -y
+>cd /tmp/
+>touch glenn.txt{1..100}
+>ll
+>cd
+
+Rightclick on the instance > img & temp >Create image
+Click on AMI to the left side  > click on the created image checkbox & launch inst
+Click on the new ami created and open the terminal 
+Change root user to ec2user
+Type rpmquery httpd
+Go to the AMI > select AMI > click on Actions > Copy ami > change region > copy ami 
+Go to the region where ami was copied , open ami and check status of ami 
+Then select the changed region and launch new instance.
+Paste public id on browser and check 
+
+Cd /tmp/

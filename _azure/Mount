@@ -1,0 +1,21 @@
+Open instance in terminal 
+Lsblk
+Df -h
+mkfs. <tab> <tab>
+mkfs.ext4 /dev/xvdb
+mkdir /data
+mount /dev/xvdb /data
+Blkid >copy uuid of xvdb and paste it below 
+Vim /etc/fstab {uuid = …. /data ext4 defaults 0 0)
+Df -h
+Cd /data
+Touch mahek.txt
+Mount -a
+Reboot the instance and check if the data is mounted or not 
+Cd /data
+19.	Ls
+20.	Df -h
+21.	To increase the size: 
+22.	Go to volume > actions > Modify volume > change size to 10gib
+23.	Resize2fs /dev/xvdb
+24.	Df -h

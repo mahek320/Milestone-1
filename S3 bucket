@@ -1,0 +1,62 @@
+Browser: AWS 
+Search s3 Bucket
+Bucket name
+ACL enable
+unclick block public access > acknowledge checkmark
+create bucket
+add and upload file /folder
+Go in file 
+click url and open in new tab : you will not be able to see 
+then go to file 
+and edit -> perimission -> everyone -> read -> save
+click url and open in new tab : you will be able to see 
+
+Launch an EC2 instance 
+
+In Terminal:
+1.yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+    2  git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+    3  ls -la
+    4  cd s3fs-fuse
+    5  ./autogen.sh
+    6  ./configure --prefix=/usr --with-openssl
+    7  make
+    8  sudo make install
+    9  which s3fs
+
+In Browser : AWS
+Search IAM
+create user -> username -> attach policy select (round option) 
+permission policy name -> search s3full -> next
+create user -> .......(write name of your choice) click on the user >
+create access key
+application running on aws (tick)
+acknowledge (tick) -> next
+decription tag -> create access key
+download .csv file
+search IAM -> add MFA -> device name -(mobile-authentication)(or you can write anyname)
+
+Go to Mobile:
+open google authenticator app
+scan QR code
+
+In Browser:
+Enter code 1(after 30 sec)
+Enter code 2
+Add MFA
+
+
+In Terminal: 
+
+   10  touch /etc/passwd-s3fs
+   11  vim /etc/passwd-s3fs
+
+Open .csv file that you have downloaded before -> copy the first key in vim editor
+-> first key:second key
+
+   12  chmod 640 /etc/passwd-s3fs
+   13  mkdir /mys3bucket
+   14  s3fs yourbucketname -o use_cache=/tmp -o allow_other -o uid=1001 -o mp_umask=002 -o multireq_max=5 /mys3bucket
+   15  df -h
+   16  cd /mys3bucket/
+   17  ls -la
